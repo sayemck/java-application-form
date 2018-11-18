@@ -1,0 +1,189 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>Untitled Document</title>
+
+<script language="javascript">
+
+function check(){
+	var flag=true;
+	var res="";
+	
+	var name= document.getElementById("name").value;
+	var email= document.getElementById("email").value;
+	var password= document.getElementById("password").value;
+	var gen= document.getElementById("gen").value;
+	var gen1= document.getElementById("gen1").value;
+	var gen2= document.getElementById("gen2").value;
+	var des= document.getElementById("des").value;
+	var nat= document.getElementById("nat").value;
+	var hobb = document.forms[0].hobby;
+	var hb="";
+	
+
+	if(name.length==0){
+		document.getElementById("error_name").innerHTML="Enter your Name";
+		var flag= false;
+		}
+		else{
+			document.getElementById("error_name").innerHTML="";
+				res +="User Name:"+name+"<br/>";
+			}
+
+	if(email.length>0 && email.indexOf("@")>0 && email.indexOf(".")>0  ){
+		
+		document.getElementById("error_email").innerHTML="";
+				res +="E-mail:"+email+"<br/>";
+		}
+		else{
+			document.getElementById("error_email").innerHTML="Enter Valid Email";
+		var flag= false;
+			
+			}
+					
+	
+		if(password.length>5 && password.length<8){
+		
+		document.getElementById("error_password").innerHTML="";
+				res +="Password:"+password+"<br/>";
+		}
+		else{
+			document.getElementById("error_password").innerHTML="Enter Your Password";
+		var flag= false;
+			
+			}
+			
+			
+		if (document.getElementById("gen").checked==true){
+			res +="Gender:"+gen+"<br/>";
+			}
+		if (document.getElementById("gen1").checked==true){
+			res +="Gender:"+gen1+"<br/>";
+			}	
+		if (document.getElementById("gen2").checked==true){
+			res +="Gender:"+gen2+"<br/>";
+			}
+			
+		if(des.length==0){
+		document.getElementById("error_des").innerHTML="Enter Your Description";
+		var flag= false;
+		}
+		else{
+			document.getElementById("error_des").innerHTML="";
+				res +="Description:"+des+"<br/>";
+			}
+	
+		if(nat.length==0){
+		document.getElementById("error_nat").innerHTML="Select your Nationality";
+		var flag= false;
+		}
+		else{
+			document.getElementById("error_nat").innerHTML="";
+				res +="Nationality:"+nat+"<br/>";
+			}
+		var i;
+		for (i = 0; i < hobb.length; i++) {
+			if (hobb[i].checked) {
+				hb = hb + hobb[i].value + " ";
+			}
+		}
+		if(hb.length==0){
+			document.getElementById("error_hobby").innerHTML="Select Hobby";
+					var flag = false;
+						
+		}
+		else {
+			document.getElementById("error_hobby").innerHTML="";
+			res += "Your Hobbies are: "+hb+"<br />";						
+			
+		}				
+			
+			
+		alert(flag);
+		if(flag==true){
+			var myWindow=window.open("","msgWindow","width=400,height=300");
+			myWindow.document.write(res);
+		}
+	
+	}
+
+</script>
+</head>
+
+<body>
+    <div align="center">
+        <fieldset>
+            <form id="frm" name="frm" onSubmit="check()">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                         <input type="text" id="name" name="name"/>
+                         <span id="error_name"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td>
+                        <input type="email" id="email" name="email"/>
+                         <span id="error_email"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>
+                        <input type="password" id="password" name="password"/>
+                         <span id="error_password"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td>
+              <input type="radio" id="gen"  name="gen"  value="Male">Male
+              <input type="radio" id="gen1" name="gen" value="Female"/>Female
+              <input type="radio" id="gen2" name="gen" value="Common"/>Common
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nationality:</td>
+                        <td>
+                        <select id="nat" name="nat">
+                        	<option value="">Select</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="India">India</option>
+                            <option value="Pakistan">Pakistan</option>
+                         </select>
+                          <span id="error_nat"> </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td>
+                        <textarea id="des" name="des"></textarea>
+                         <span id="error_des"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hobby:</td>
+                        <td>
+               <input type="checkbox" id="hobby" name="hobby" value="Eat"/>Eat
+              <input type="checkbox" id="hobby" name="hobby" value="Sleep"/>Sleep
+              <input type="checkbox" id="hobby" name="hobby" value="Travel"/>Travel
+               <input type="checkbox" id="hobby" name="hobby" value="Study"/>Study
+                         <span id="error_hobby"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                <input onClick="check()" type="button" id="button" value="Submit"/>
+                 
+                        </td>
+                    </tr>
+                </table>
+                </form>
+        </fieldset>
+    </div>
+</body>
+</html>
